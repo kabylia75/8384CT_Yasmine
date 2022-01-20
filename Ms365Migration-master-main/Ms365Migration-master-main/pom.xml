@@ -1,0 +1,201 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ms365migration</groupId>
+  <artifactId>ms365</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>MS365</name>
+  <description>This is ms365.com with full-scale automation testing framework</description>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <log4j.version>2.14.1</log4j.version>
+   
+    
+  </properties>
+  
+  
+  
+  <profiles>
+  
+    <profile>
+  	  <id>Regression</id>
+    </profile>
+  
+    <profile>
+  	  <id>Smoke</id>
+  	</profile>
+  	
+  </profiles>
+  
+  <build>
+  	
+    <pluginManagement>
+      <plugins>
+        
+      	<!--  To run all test cases and generate maven reports -->
+        <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M5</version>
+          <configuration>
+            <suiteXmlFiles>
+              <suiteXmlFile>testng.xml</suiteXmlFile>
+            </suiteXmlFiles>
+          </configuration>
+        </plugin>
+        
+        <!-- this plugin displays the active profile being used in compile phase -->
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-help-plugin</artifactId>
+		  <version>3.1.0</version>
+		  <executions>
+            <execution>
+              <id>show-profiles</id>
+              <phase>compile</phase>
+              <goals>
+                <goal>active-profiles</goal>
+              </goals>
+            </execution>
+          </executions>
+		</plugin>
+		
+		
+		
+		
+    
+     
+
+        
+      </plugins>
+    </pluginManagement>
+    
+  </build>
+  
+  
+  <dependencies>
+    <!-- to use selenium version 4 -->
+	<dependency>
+	  <groupId>org.seleniumhq.selenium</groupId>
+	  <artifactId>selenium-java</artifactId>
+	  <version>4.1.0</version>
+    </dependency>
+    
+    <!-- to use appium -->
+    <dependency>
+      <groupId>io.appium</groupId>
+      <artifactId>java-client</artifactId>
+      <version>7.6.0</version>
+	</dependency>
+    
+    <!-- to get utilities and file filters -->
+	<dependency>
+	  <groupId>commons-io</groupId>
+	  <artifactId>commons-io</artifactId>
+	  <version>2.11.0</version>
+	</dependency>
+	
+	<!-- rest-assured library -->
+	<dependency>
+	    <groupId>io.rest-assured</groupId>
+	    <artifactId>rest-assured</artifactId>
+	    <version>4.4.0</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-path</artifactId>
+      <version>4.4.0</version>
+      <scope>test</scope>
+	</dependency>
+	<dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>4.4.0</version>
+      <scope>test</scope>
+	</dependency>
+
+    <!-- to use testng -->
+    <dependency>
+	  <groupId>org.testng</groupId>
+	  <artifactId>testng</artifactId>
+	  <version>7.3.0</version>
+	   <scope>compile</scope>
+   </dependency>
+   
+	<!-- to manage webdrivers -->
+     <dependency>
+	   <groupId>io.github.bonigarcia</groupId>
+	   <artifactId>webdrivermanager</artifactId>
+	   <version>5.0.3</version>
+     </dependency>        
+	
+	<!-- to use log4j -->
+	<dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.14.1</version>
+    </dependency>
+   
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.14.1</version>
+    </dependency>
+	
+	<dependency>
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-slf4j-impl</artifactId>
+	  <version>2.14.1</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>com.lmax</groupId>
+	  <artifactId>disruptor</artifactId>
+	  <version>3.4.4</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>com.sun.mail</groupId>
+	  <artifactId>javax.mail</artifactId>
+	  <version>1.6.2</version>
+	</dependency>
+	
+	<!-- to add extent report -->
+	<dependency>
+	  <groupId>com.aventstack</groupId>
+	  <artifactId>extentreports</artifactId>
+	  <version>4.1.3</version>
+	</dependency>
+	
+	<!-- to access excel workbooks -->
+	<dependency>
+	  <groupId>org.apache.poi</groupId>
+	  <artifactId>poi-ooxml</artifactId>
+	  <version>5.0.0</version>
+	</dependency>
+	
+	<dependency>
+	  <groupId>org.apache.poi</groupId>
+	  <artifactId>poi</artifactId>
+	  <version>5.1.0</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/com.github.virtuald/curvesapi -->
+    <dependency>
+    <groupId>com.github.virtuald</groupId>
+    <artifactId>curvesapi</artifactId>
+    <version>1.06</version>
+    </dependency>
+    
+    
+   
+	
+	
+  </dependencies>
+  
+</project>
